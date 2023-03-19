@@ -621,8 +621,8 @@ if __name__ == "__main__":
     opt = parser.parse_args()
     model_path = opt.mode_path
     model_path1 = opt.mode_path1
-    data_path = "NCR-data/data"
-    vocab_path = "NCR-data/vocab"
+    data_path = "/data"
+    vocab_path = "/vocab"
     print(f"loading {model_path}")
     if model_path1:
         evalrank2(
