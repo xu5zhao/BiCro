@@ -31,7 +31,7 @@ We use a subset of [Conceptual Captions](https://ai.google.com/research/Conceptu
 ## Training and Evaluation
 
 ### Training new models
-Modify some necessary parameters (i.e., ```data_path```, ```vocab_path```, ```noise_ratio```, ```warmup_epoch```, ```module_name```, and ```folder_name``` ) in ```train_xxx.sh``` file and run it.
+Modify some necessary parameters and run it.
 
 For Flickr30K:
 ```
