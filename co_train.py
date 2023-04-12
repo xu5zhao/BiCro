@@ -336,6 +336,7 @@ def train(opt, net, net2, labeled_trainloader, unlabeled_trainloader=None, epoch
             loss_u = 0
             with torch.no_grad():
                 net2.val_start()
+                c_y,n_y = net2.predict(batch_images_l, batch_text_l, batch_lengths_l)
         else:
             with torch.no_grad():
                 net2.val_start()
