@@ -375,25 +375,20 @@ def evalrank2(model_path, data_path=None, vocab_path=None, split="dev", fold5=Fa
         "Images: %d, Captions: %d"
         % (img_embs_A.shape[0] / per_captions, cap_embs_A.shape[0])
     )
-    print("1")
     if not fold5:
         # no cross-validation, full evaluation FIXME
         img_embs_A = np.array(
             [img_embs_A[i] for i in range(0, len(img_embs_A), per_captions)]
         )
-        print("2")
         img_embs_B = np.array(
             [img_embs_B[i] for i in range(0, len(img_embs_B), per_captions)]
         )
-        print("2")
         img_embs_A1 = np.array(
             [img_embs_A1[i] for i in range(0, len(img_embs_A1), per_captions)]
         )
-        print("2")
         img_embs_B1 = np.array(
             [img_embs_B1[i] for i in range(0, len(img_embs_B1), per_captions)]
         )
-        print("2")
         # record computation time of validation
         start = time.time()
         sims_A = shard_attn_scores(
@@ -403,15 +398,12 @@ def evalrank2(model_path, data_path=None, vocab_path=None, split="dev", fold5=Fa
             model_B, img_embs_B, cap_embs_B, cap_lens_B, opt, shard_size=1000
         )
         sims = (sims_A + sims_B) / 2
-        print("3")
         sims_A1 = shard_attn_scores(
             model_A1, img_embs_A1, cap_embs_A1, cap_lens_A1, opt1, shard_size=1000
         )
-        print("3")
         sims_B1 = shard_attn_scores(
             model_B1, img_embs_B1, cap_embs_B1, cap_lens_B1, opt1, shard_size=1000
         )
-        print("3")
         sims0 = (sims_A + sims_B) / 2
         sims1 = (sims_A1 + sims_B1) / 2
         sims = (sims0 + sims1) / 2
@@ -430,7 +422,6 @@ def evalrank2(model_path, data_path=None, vocab_path=None, split="dev", fold5=Fa
         print("Image to text: %.1f %.1f %.1f %.1f %.1f" % r)
         print("Average t2i Recall: %.1f" % ari)
         print("Text to image: %.1f %.1f %.1f %.1f %.1f" % ri)
-        print("sum:",(mean_metrics[0] + mean_metrics[1] + mean_metrics[2]+mean_metrics[5] + mean_metrics[6] + mean_metrics[7]))
     else:
         # 5fold cross-validation, only for MSCOCO
         results = []
@@ -616,19 +607,25 @@ if __name__ == "__main__":
     os.environ["CUDA_VISIBLE_DEVICES"] = '0'
     parser = argparse.ArgumentParser(fromfile_prefix_chars="@")
     parser.add_argument(
-        "--mode_path", default="/data", help="path to datasets"
+        "--mode_path", default="", help="path to datasets"
     )
     parser.add_argument(
         "--mode_path1", default="", help="path to datasets"
     )
     parser.add_argument(
-        "--data_name", default="", help="path to datasets"
+        "--data_name", default="f30k_precomp", help="path to datasets"
+    )
+    parser.add_argument(
+        "--data_path", default="", help="path to datasets"
+    )
+    parser.add_argument(
+        "--vocab_path", default="", help="path to datasets"
     )
     opt = parser.parse_args()
     model_path = opt.mode_path
     model_path1 = opt.mode_path1
-    data_path = ""
-    vocab_path = ""
+    data_path = opt.data_path
+    vocab_path = opt.vocab_path
     print(f"loading {model_path}")
     if opt.data_name=='coco_precomp':
         if model_path1:
@@ -652,11 +649,15 @@ if __name__ == "__main__":
             evalrank2(
                 [model_path,model_path1],
                 split="test",
+                data_path=data_path,
+                vocab_path=vocab_path,
                 fold5=False,
             )
         else:
             evalrank(
                 model_path,
                 split="test",
+                data_path=data_path,
+                vocab_path=vocab_path,
                 fold5=False,
             )
