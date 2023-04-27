@@ -1,5 +1,5 @@
 
-PyTorch implementation for [BiCro: Noisy Correspondence Rectification for Multi-modality Data via Bi-directional Cross-modal Similarity Consistency](https://github.com/xu5zhao/BiCro#readme) (CVPR 2023).
+PyTorch implementation for [BiCro: Noisy Correspondence Rectification for Multi-modality Data via Bi-directional Cross-modal Similarity Consistency](https://arxiv.org/pdf/2303.12419.pdf) (CVPR 2023).
 
 If you have any questions, feel free to contact 20b903054@stu.hit.edu.cn
 
