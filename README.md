@@ -55,7 +55,7 @@ F30K 20% noise model [Download](https://1drv.ms/f/s!At35ksCBMmxRjDu0KWs2U_2p0ZQU
 
 F30K 40% noise model [Download](https://1drv.ms/f/s!At35ksCBMmxRi3HSoV-3qOx2KRZC?e=AA4hKi)
 
-F30K 60% noise model [Download](https://1drv.ms/f/s!At35ksCBMmxRi25GXSKSfZ0NXSND?e=rAbFIv)
+F30K 60% noise model [Download](https://1drv.ms/f/s!At35ksCBMmxRjDyUgPjrIbbwdR5a?e=FnLMIH)
 
 
 ## Citation
