@@ -50,8 +50,9 @@ sh train_cc152k.sh
 
 ### Pre-trained models and evaluation
 The pre-trained models are available here:
-
+F30K 20% noise model [Download](https://1drv.ms/f/s!At35ksCBMmxRjDu0KWs2U_2p0ZQU?e=nhsvk2)
 F30K 40% noise model [Download](https://1drv.ms/f/s!At35ksCBMmxRi3HSoV-3qOx2KRZC?e=AA4hKi)
+F30K 60% noise model [Download](https://1drv.ms/f/s!At35ksCBMmxRi25GXSKSfZ0NXSND?e=rAbFIv)
 
 
 ## Citation
